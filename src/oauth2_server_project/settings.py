@@ -21,6 +21,7 @@ DJANGO_CORE_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
+    "corsheaders",
     "oauth2_provider",
     "rest_framework",
 ]
@@ -34,6 +35,7 @@ INSTALLED_APPS = DJANGO_CORE_APPS + THIRD_PARTY_APPS + PROJECT_APPS
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -87,12 +89,14 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 
-LOGIN_URL = '/admin/login/'
+LOGIN_URL = "/admin/login/"
 
-AUTH_USER_MODEL = 'users.User'
+AUTH_USER_MODEL = "users.User"
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "oauth2_provider.contrib.rest_framework.OAuth2Authentication",
     )
 }
+
+CORS_ALLOW_ALL_ORIGINS = True
