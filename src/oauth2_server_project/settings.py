@@ -28,6 +28,7 @@ THIRD_PARTY_APPS = [
 
 PROJECT_APPS = [
     "users",
+    "oauth2server",
 ]
 
 INSTALLED_APPS = DJANGO_CORE_APPS + THIRD_PARTY_APPS + PROJECT_APPS
@@ -101,3 +102,23 @@ REST_FRAMEWORK = {
 }
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+
+OAUTH2_PROVIDER = {
+    "ACCESS_TOKEN_EXPIRE_SECONDS": 60 * 60 * 24,
+    "REFRESH_TOKEN_EXPIRE_SECONDS": 60 * 60 * 24,
+    "REFRESH_TOKEN_GRACE_PERIOD_SECONDS": 60 * 2,
+    "AUTHORIZATION_CODE_EXPIRE_SECONDS": 60 * 60,
+    "ROTATE_REFRESH_TOKEN": True,
+    "REQUEST_APPROVAL_PROMPT": "auto",
+    "ACCESS_TOKEN_GENERATOR": "oauth2server.generators.generate_access_token",
+    "REFRESH_TOKEN_GENERATOR": "oauth2server.generators.generate_access_token",
+    "OAUTH2_SERVER_CLASS": "oauthlib.oauth2.Server",
+    "OAUTH2_VALIDATOR_CLASS": "oauth2_provider.oauth2_validators.OAuth2Validator",
+    "CLIENT_ID_GENERATOR_CLASS": "oauth2server.generators.ClientIdGenerator",
+    "CLIENT_SECRET_GENERATOR_CLASS": "oauth2server.generators.ClientSecretGenerator",
+    "SCOPES_BACKEND_CLASS": "oauth2server.scopes_backend.SettingsScopes",
+    "ALLOWED_REDIRECT_URI_SCHEMES": ["http", "https"],
+    "ERROR_RESPONSE_WITH_SCOPES": True,
+    "PKCE_REQUIRED": False,
+}
