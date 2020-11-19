@@ -1,6 +1,3 @@
-from typing import cast
-
-from oauth2_provider.models import AbstractAccessToken
 from rest_framework import serializers
 from rest_framework.exceptions import NotFound
 from rest_framework.generics import RetrieveAPIView
@@ -15,7 +12,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class CurrentUserAPIView(RetrieveAPIView):
-    queryset = User.objects.all()
+    queryset = User.objects.none()
     serializer_class = UserSerializer
 
     def get_object(self) -> User:
