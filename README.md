@@ -18,3 +18,19 @@ Authorization server response
     "refresh_token": "KeZ9JMD7wU3wLrbTXLAorUDkHt6tLN"
 }
 ```
+
+### Client credentials flow
+
+```
+curl -XPOST localhost:8000/oauth2/token/ -d "grant_type=client_credentials&client_id=<client_id>&client_secret=<client_secret>"
+```
+
+Authorization server response
+```
+{
+    "access_token": "14TIDcNBtpUtWCHBTdrV4r5hA2TJUj",
+    "expires_in": 86400,
+    "token_type": "Bearer",
+    "scope": "view_user"
+}
+```
