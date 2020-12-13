@@ -20,7 +20,7 @@ Authorization server response
 ```
 
 ### Client credentials flow
-
+Send request to authorization server
 ```
 curl -XPOST localhost:8000/oauth2/token/ -d "grant_type=client_credentials&client_id=<client_id>&client_secret=<client_secret>"
 ```
@@ -34,3 +34,11 @@ Authorization server response
     "scope": "view_user"
 }
 ```
+
+### Implicit grant
+Send request to authorization server
+```
+curl -XGET localhost:8000/oauth2/authorize/ -d "client_id=KY4yGW3AnOCfnMDrzdb3WVBmiE7xdeCFu0GO8Xz8&response_type=token&redirect_uri=http://localhost:8002/" 
+```
+Authorization server redirects user to authorization page.
+If user authorizes client, then authorization server redirects to `redirect_uri`
