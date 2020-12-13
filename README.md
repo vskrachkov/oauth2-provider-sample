@@ -42,3 +42,11 @@ curl -XGET localhost:8000/oauth2/authorize/ -d "client_id=KY4yGW3AnOCfnMDrzdb3WV
 ```
 Authorization server redirects user to authorization page.
 If user authorizes client, then authorization server redirects to `redirect_uri`
+
+### Authorization code grant
+Send request to authorization server
+```
+curl -XGET localhost:8000/oauth2/authorize/ -d "client_id=KY4yGW3AnOCfnMDrzdb3WVBmiE7xdeCFu0GO8Xz8&response_type=code&redirect_uri=http://localhost:8002/" 
+```
+Authorization server redirects user to authorization page.
+If user authorizes client, then authorization server redirects to `redirect_uri`
